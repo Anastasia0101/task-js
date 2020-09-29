@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function showMessage() {
+            var message = document.getElementById("user_input").value;
+            var characters = '@#$%^&*';
+
+            for (let i = 0; i < message.length; i++) {
+                for (let j = 0; j < characters.length; j++) {
+                    if ((message[i] == characters[j]) || (message.length < 3)) {
+                        document.getElementById("more").innerHTML = message;
+                        changeElement("more", "red");
+                        break;
+                    } else if (message.length > 3) {
+                        document.getElementById("more").innerHTML = message;
+                        changeElement("more", "green");
+                        break;
+                    }
+                }
+            }
+        }
+
+        function changeElement(id, color) {
+            var el = document.getElementById(id);
+            el.style.fontSize = "30px";
+            el.style.color = color;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" id="user_input">
+        <button onclick="showMessage(); document.getElementById('user_input').value = ''">Click</button>
+        <p id="more"></p>
+        <p id="output"></p>
+    </div>
+</body>
+</html>
